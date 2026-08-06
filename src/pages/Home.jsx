@@ -1,20 +1,10 @@
 import axios from "axios"
 import { useEffect } from "react"
+import { useRecipes } from "../contexts/RecipesContext"
 
 export default function Home() {
 
-    function getRecipes() {
-
-        axios.get("https://ricettario-spring.duckdns.org/api/recipes/7")
-            .then(res => console.log(res.data))
-
-    }
-
-    useEffect(() => {
-
-        getRecipes()
-
-    }, [])
+    const { recipes, setRecipes } = useRecipes()
 
     return (
 
