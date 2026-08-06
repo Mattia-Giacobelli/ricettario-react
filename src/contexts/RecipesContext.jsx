@@ -1,5 +1,5 @@
 import axios from "axios";
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 const RecipesContext = createContext()
 
@@ -26,7 +26,7 @@ function RecipesProvider({ children }) {
     return (
 
         <RecipesContext.Provider
-            value={recipes, setRecipes}>
+            value={{ recipes, setRecipes }}>
         </RecipesContext.Provider>
 
     )
