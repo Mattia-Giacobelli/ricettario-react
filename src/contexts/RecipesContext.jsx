@@ -9,7 +9,7 @@ function RecipesProvider({ children }) {
 
     function getRecipes() {
 
-        axios.get("https://ricettario-spring.duckdns.org/api/recipes")
+        axios.get(`${import.meta.env.VITE_API_URL}/recipes`)
             .then(res => {
                 console.log(res.data)
                 setRecipes(res.data)
@@ -27,6 +27,7 @@ function RecipesProvider({ children }) {
 
         <RecipesContext.Provider
             value={{ recipes, setRecipes }}>
+            {children}
         </RecipesContext.Provider>
 
     )
