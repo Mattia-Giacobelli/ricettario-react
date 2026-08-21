@@ -9,6 +9,13 @@
     font-style: normal;
 }
 
+a {
+
+    text-decoration: none;
+    color: black;
+
+}
+
 
 
 /* HEADER */
@@ -35,6 +42,8 @@ header {
 
 main {
 
+    margin-top: 56px;
+
     background-color: azure;
 
     height: 100vh;
@@ -53,8 +62,8 @@ main {
 
         img {
 
-            width: 100%;
-            padding: 4rem 1rem;
+            width: 90%;
+            padding: 4rem 0 2rem 10%;
 
         }
 
