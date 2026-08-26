@@ -4,6 +4,8 @@ import { RecipesProvider } from "./contexts/RecipesContext"
 import DefaultLayout from "./layouts/DefaultLayout"
 import RandomWheel from "./pages/RandomWheel"
 import Register from "./pages/Register"
+import { AuthProvider } from "./contexts/AuthContext"
+import Login from "./pages/Login"
 
 
 function App() {
@@ -11,15 +13,18 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <RecipesProvider>
-          <Routes>
-            <Route element={<DefaultLayout />}>
-              <Route path="/register" element={<Register />} />
-              <Route path="/" element={<Home />} />
-              <Route path="/wheel" element={<RandomWheel />} />
-            </Route>
-          </Routes>
-        </RecipesProvider>
+        <AuthProvider>
+          <RecipesProvider>
+            <Routes>
+              <Route element={<DefaultLayout />}>
+                <Route path="/register" element={<Register />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/" element={<Home />} />
+                <Route path="/wheel" element={<RandomWheel />} />
+              </Route>
+            </Routes>
+          </RecipesProvider>
+        </AuthProvider>
       </BrowserRouter>
     </>
   )

@@ -16,33 +16,48 @@ a {
 
 }
 
+.recipe-btn {
+
+    font-size: 0.8rem;
+    margin-left: 0.2rem;
+    margin-right: 0.2rem;
+    padding: 0.3rem 0.5rem;
+
+}
 
 
 /* HEADER */
 
 header {
-    position: relative;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
 
-    h2 {
+    nav {
 
-        padding: 0.6rem 0 0.6rem 0.4rem;
-        height: 56px;
-        width: 100vw;
+        padding: 0 !important;
 
-        position: fixed;
-        top: 0px;
-        left: 0px;
-        z-index: 999;
+        .container-fluid {
+
+            height: 66px !important;
+
+        }
 
     }
 
+    h2 {
+        padding: 0.6rem 0 0.6rem 0.4rem;
+        margin: 0;
+    }
 }
 
 /* MAIN */
 
 main {
 
-    margin-top: 56px;
+    padding-top: 66px;
 
     background-color: azure;
 
@@ -58,7 +73,7 @@ main {
         height: 100vh;
 
         position: fixed;
-        top: 56px;
+        top: 66px;
 
         img {
 
@@ -73,7 +88,7 @@ main {
 
         background-color: blue;
 
-        width: 77%;
+        width: 67%;
         height: 100vh;
 
         position: fixed;
@@ -81,17 +96,27 @@ main {
         left: 18%;
         right: 5%;
 
+        /* 
+            ACtive poll overflow
+        */
+        .poll-overflow {
+
+            height: 250px;
+            overflow-y: scroll;
+
+        }
+
     }
 
     .right-sidebar {
 
         background-color: #f7f6f1;
 
-        width: 5%;
+        width: 15%;
         height: 100vh;
 
         position: fixed;
-        top: 56px;
+        top: 66px;
         right: 0;
 
     }
