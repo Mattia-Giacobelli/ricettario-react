@@ -90,7 +90,7 @@ export default function DefaultLayout() {
 
                     </button>
 
-                    <input name="search" class="form-control search-pop-up d-none fade-out" type="text"
+                    <input name="search" className="form-control search-pop-up d-none fade-out" type="text"
                         value={searchValue} onChange={e => getSearch(e.target.value)} />
 
                     <Link to={"/wheel"} className="">

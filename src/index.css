@@ -85,92 +85,67 @@ header {
 /* MAIN */
 
 main {
-
     padding-top: 66px;
-
     background-color: azure;
-
-    height: 100vh;
-
+    min-height: 100vh;
     position: relative;
 
     .left-sidebar {
-
         background-color: white;
-
         width: 18%;
-        height: 100vh;
+        /* Calcola l'altezza corretta sottraendo i 66px del header */
+        height: calc(100vh - 66px);
 
         position: fixed;
         top: 66px;
+        left: 0;
 
         img {
-
             width: 90%;
             padding: 4rem 0 2rem 10%;
-
         }
-
     }
 
     .content {
-
         background-color: #f6f3f6;
-
         width: 78%;
-        height: 100vh;
+        min-height: calc(100vh - 66px);
 
-        position: fixed;
-        top: 56px;
-        left: 18%;
-        right: 5%;
+        /* ✅ CAMBIATO: da fixed a margin-left per fluire nello scroll normale */
+        margin-left: 18%;
+        margin-right: 4%;
 
-        /* 
-            ACtive poll overflow
-        */
         .poll-overflow {
-
             height: 250px;
-            overflow-y: scroll;
-
+            overflow-y: auto;
+            /* auto è preferibile a scroll */
         }
-
     }
 
     .right-sidebar {
-
         background-color: white;
-
         width: 4%;
-        height: 100vh;
+        height: calc(100vh - 66px);
 
         position: fixed;
         top: 66px;
         right: 0;
 
         .search-pop-up {
-
             width: 25%;
-
             margin-top: 2px;
-
             position: fixed;
             top: 66px;
             right: 40px;
-
         }
 
         button,
         a {
-
             padding: 0.5rem 30%;
             border: none;
             margin-bottom: 0.3rem;
-
         }
-
     }
-
 }
 
 /* Animations */
