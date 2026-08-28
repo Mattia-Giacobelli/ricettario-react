@@ -4,6 +4,8 @@ import { useRecipes } from "../contexts/RecipesContext"
 import { Link, useNavigate } from "react-router-dom"
 import { useAuth } from "../contexts/AuthContext"
 
+const colors = ['#19eb70', '#95C11E', '#F1C40F', '#E67E22', '#E74C3C']
+
 export default function Home() {
 
     const navigate = useNavigate()
@@ -197,7 +199,7 @@ export default function Home() {
 
                                                             {loggedUser?.permission &&
                                                                 <td>
-                                                                    {!cand.username === loggedUser.username &&
+                                                                    {!activePoll?.votes?.some(vote => vote.username === loggedUser?.username) &&
                                                                         <button className="btn btn-outline-success recipe-btn"
                                                                             onClick={() => vote(cand.candidateId, loggedUser.username
                                                                             )}>
@@ -390,9 +392,9 @@ export default function Home() {
 
                             return (
 
-                                <Link to={`/recipes/${recipe.id}`}>
+                                <Link to={`/recipes/${recipe.id}`} key={"recipes" + recipe.id}>
 
-                                    <div className="col" key={"recipes" + recipe.id}>
+                                    <div className="col">
 
                                         <div className="card">
 
@@ -403,7 +405,7 @@ export default function Home() {
 
                                             </div>
 
-                                            <div className="card-body p-2 bg-info-">
+                                            <div className="card-body p-2" style={{ backgroundColor: colors[recipe?.rating?.difficulty - 1] }}>
 
                                                 <h4 className="p-0">
                                                     {recipe.name}
@@ -427,9 +429,9 @@ export default function Home() {
 
                             return (
 
-                                <Link to={`/recipes/${recipe.id}`}>
+                                <Link to={`/recipes/${recipe.id}`} key={"recipe" + recipe.id}>
 
-                                    <div className="col" key={"recipe" + recipe.id}>
+                                    <div className="col">
 
                                         <div className="card">
 
@@ -440,10 +442,10 @@ export default function Home() {
 
                                             </div>
 
-                                            <div className="card-body p-2 bg-info-">
+                                            <div className="card-body p-2">
 
                                                 <h4 className="p-0">
-                                                    {recipe.name} ricerca
+                                                    {recipe.name}
                                                 </h4>
 
                                             </div>

@@ -12,6 +12,8 @@ export default function DefaultLayout() {
         searchValue, getSearch
     } = useRecipes()
 
+    const [isOpen, setIsOpen] = useState(false);
+
     useEffect(() => {
 
         getLastPoll()
@@ -72,26 +74,22 @@ export default function DefaultLayout() {
 
                 <div className="right-sidebar">
 
-                    <button className="bg-warning" onClick={() => {
-
-                        const search = document.querySelector(".search-pop-up")
-
-                        if (search.classList.contains("d-none")) {
-                            search.classList.remove("d-none", "fade-out")
-                            search.classList.add("fade-in")
-                        } else {
-                            search.classList.remove("fade-in")
-                            search.classList.add("d-none", "fade-out")
-                        }
-
-                    }}>
-
+                    {/* 2. Toggle dello stato al click */}
+                    <button
+                        className="bg-warning"
+                        onClick={() => setIsOpen(prev => !prev)}
+                    >
                         <i className="bi bi-search"></i>
-
                     </button>
 
-                    <input name="search" className="form-control search-pop-up d-none fade-out" type="text"
-                        value={searchValue} onChange={e => getSearch(e.target.value)} />
+                    {/* 3. Applicazione dinamica delle classi CSS basata sullo stato */}
+                    <input
+                        name="search"
+                        className={`form-control search-pop-up ${isOpen ? 'fade-in' : 'd-none fade-out'}`}
+                        type="text"
+                        value={searchValue}
+                        onChange={e => getSearch(e.target.value)}
+                    />
 
                     <Link to={"/wheel"} className="">
                         <i className="bi bi-5-circle"></i>
