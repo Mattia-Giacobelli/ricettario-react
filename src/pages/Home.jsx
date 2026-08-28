@@ -10,17 +10,19 @@ export default function Home() {
 
     const { loggedUser } = useAuth()
 
-    const { recipes, recipesAll,
+    const { recipes, setRecipes, recipesAll,
         activePoll, recipeId, setRecipeId, vote, addRecipe, deleteRecipe, getActivePoll,
-        addSuggestion, getRecipesAll, getRecipes, setErrMsg } = useRecipes()
+        addSuggestion, getRecipesAll, getRecipes, setErrMsg, results } = useRecipes()
 
+    async function nextPage(page) {
+
+        await getRecipes(page)
+
+    }
 
     useEffect(() => {
 
         getActivePoll()
-
-        getRecipes()
-        getRecipesAll()
 
     }, [])
 
@@ -46,7 +48,7 @@ export default function Home() {
 
                                 {activePoll?.candidates?.length === 0 &&
 
-                                    <div className="col-6">
+                                    <div className="col-12 col-md-6">
 
                                         <h6>Ricette candidate</h6>
 
@@ -95,7 +97,7 @@ export default function Home() {
 
                                 {activePoll && activePoll?.suggestions?.length === 0 &&
 
-                                    <div className="col-6">
+                                    <div className="col-12 col-md-6">
 
                                         <h6>Ricette suggerite</h6>
 
@@ -157,7 +159,8 @@ export default function Home() {
                                 }
 
                                 {activePoll?.candidates?.length > 0 &&
-                                    <div className="col-6 poll-overflow">
+
+                                    <div className="col-12 col-md-6 poll-overflow">
 
                                         <table>
 
@@ -269,10 +272,13 @@ export default function Home() {
 
                                             </form>}
 
-                                    </div>}
+                                    </div>
+
+                                }
 
                                 {activePoll?.suggestions?.length > 0 &&
-                                    <div className="col-6 poll-overflow">
+
+                                    <div className="col-12 col-md-6 poll-overflow">
 
                                         <table>
 
@@ -364,7 +370,9 @@ export default function Home() {
 
                                             </form>}
 
-                                    </div>}
+                                    </div>
+
+                                }
 
                             </div>
 
@@ -373,6 +381,93 @@ export default function Home() {
                     </div>
 
                 }
+
+                <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-6 g-4 mt-3">
+
+                    {results.length === 0 ?
+
+                        recipes?.content?.map(recipe => {
+
+                            return (
+
+                                <div className="col" key={"recipes" + recipe.id}>
+
+                                    <div className="card">
+
+                                        <div className="card-header img-contain p-0">
+
+                                            <img src={`${import.meta.env.VITE_LARAVEL_IMG_URL}${recipe.imageUrl}`}
+                                                alt={recipe.name} />
+
+                                        </div>
+
+                                        <div className="card-body p-2 bg-info-">
+
+                                            <h4 className="p-0">
+                                                {recipe.name}
+                                            </h4>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            )
+
+                        })
+
+                        :
+
+                        results.map(recipe => {
+
+                            return (
+
+                                <div className="col" key={"recipes" + recipe.id}>
+
+                                    <div className="card">
+
+                                        <div className="card-header img-contain p-0">
+
+                                            <img src={`${import.meta.env.VITE_LARAVEL_IMG_URL}${recipe.imageUrl}`}
+                                                alt={recipe.name} />
+
+                                        </div>
+
+                                        <div className="card-body p-2 bg-info-">
+
+                                            <h4 className="p-0">
+                                                {recipe.name} ricerca
+                                            </h4>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            )
+
+                        })}
+
+                </div>
+
+                <div>
+
+                    <div className="input-group d-flex justify-content-center">
+
+                        {recipes?.number < recipes?.totalPages &&
+
+                            <button className="btn btn-outline-secondary m-3"
+                                onClick={() => prevPage(recipes?.number + 1)}>
+                                +
+                            </button>
+
+                        }
+
+                    </div>
+
+                </div>
 
             </div>
 

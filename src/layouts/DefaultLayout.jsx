@@ -8,7 +8,9 @@ export default function DefaultLayout() {
 
     const [lastWin, setLastwin] = useState({})
 
-    const { recipeName, setRecipeName, addSuggestion, lastPoll, setLastPoll, getLastPoll, errMsg } = useRecipes()
+    const { recipeName, setRecipeName, addSuggestion, lastPoll, setLastPoll, getLastPoll, errMsg,
+        searchValue, getSearch
+    } = useRecipes()
 
     useEffect(() => {
 
@@ -45,13 +47,13 @@ export default function DefaultLayout() {
                         <div className="card text-center mt-5 m-3">
 
                             <div className="card-header">
-                                Ultima vincitrice
+                                Ultima vincitrice: <br></br>
+                                {lastPoll?.winningRecipe?.name}
                             </div>
 
-                            <div className="card-body">
-                                <img src={`${import.meta.env.VITE_LARAVEL_IMG_URL}${lastPoll?.winningRecipe?.imageUrl}`}
+                            <div className="card-body img-contain p-0">
+                                <img className="p-0" src={`${import.meta.env.VITE_LARAVEL_IMG_URL}${lastPoll?.winningRecipe?.imageUrl}`}
                                     alt={lastPoll?.winningRecipe?.name} />
-                                {lastPoll?.winningRecipe?.name}
                             </div>
 
                         </div>
@@ -70,13 +72,34 @@ export default function DefaultLayout() {
 
                 <div className="right-sidebar">
 
-                    <span>
+                    <button className="bg-warning" onClick={() => {
+
+                        const search = document.querySelector(".search-pop-up")
+
+                        if (search.classList.contains("d-none")) {
+                            search.classList.remove("d-none", "fade-out")
+                            search.classList.add("fade-in")
+                        } else {
+                            search.classList.remove("fade-in")
+                            search.classList.add("d-none", "fade-out")
+                        }
+
+                    }}>
 
                         <i className="bi bi-search"></i>
 
-                    </span>
+                    </button>
+
+                    <input name="search" class="form-control search-pop-up d-none fade-out" type="text"
+                        value={searchValue} onChange={e => getSearch(e.target.value)} />
+
+                    <Link to={"/wheel"} className="">
+                        <i className="bi bi-5-circle"></i>
+                    </Link>
 
                 </div>
+
+
 
             </main>
 

@@ -6,7 +6,7 @@ const RecipesContext = createContext()
 
 function RecipesProvider({ children }) {
 
-    const [recipes, setRecipes] = useState([])
+    const [recipes, setRecipes] = useState({})
 
     const [recipeName, setRecipeName] = useState("")
 
@@ -21,6 +21,10 @@ function RecipesProvider({ children }) {
     const [errMsg, setErrMsg] = useState("")
 
     const [succMsg, setSuccMsg] = useState("")
+
+    const [searchValue, setSearchValue] = useState("")
+
+    const [results, setResults] = useState([])
 
     function vote(candidateId, username) {
 
@@ -107,6 +111,7 @@ function RecipesProvider({ children }) {
 
                 console.log(res.data)
                 setActivePoll(res.data)
+                getRecipesAll()
 
             })
             .catch(err => console.log(err))
@@ -172,19 +177,41 @@ function RecipesProvider({ children }) {
     }
 
 
-    function getRecipes() {
+    function getRecipes(page) {
 
-        axios.get(`${import.meta.env.VITE_API_URL}/recipes`)
+        axios.get(`${import.meta.env.VITE_API_URL}/recipes`, {
+            params: {
+                page
+            }
+        })
             .then(res => {
                 console.log(res.data)
-                setRecipes(res.data)
+                setRecipes(prevRecipes => {
+
+                    const currentItems = prevRecipes?.content || [];
+
+                    const newItems = res.data?.content || [];
+
+                    return {
+                        ...res.data,
+                        content: [...currentItems, ...newItems]
+                    };
+                });
             })
+
+    }
+
+    function getSearch(value) {
+
+        setSearchValue(value)
+
+        setResults(recipesAll.filter(recipe => recipe.name.includes(value)))
 
     }
 
     useEffect(() => {
 
-        getRecipes()
+        getRecipes(0)
 
     }, [])
 
@@ -195,7 +222,7 @@ function RecipesProvider({ children }) {
                 recipes, setRecipes, recipeName, setRecipeName, recipesAll, setRecipesAll,
                 activePoll, setActivePoll, recipeId, setRecipeId, vote, addRecipe, deleteRecipe, getActivePoll,
                 addSuggestion, getRecipesAll, getRecipes, errMsg, setErrMsg, succMsg, setSuccMsg,
-                lastPoll, setLastPoll, getLastPoll
+                lastPoll, setLastPoll, getLastPoll, searchValue, setSearchValue, results, setResults, getSearch
             }}>
             {children}
         </RecipesContext.Provider>
