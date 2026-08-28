@@ -390,28 +390,32 @@ export default function Home() {
 
                             return (
 
-                                <div className="col" key={"recipes" + recipe.id}>
+                                <Link to={`/recipes/${recipe.id}`}>
 
-                                    <div className="card">
+                                    <div className="col" key={"recipes" + recipe.id}>
 
-                                        <div className="card-header img-contain p-0">
+                                        <div className="card">
 
-                                            <img src={`${import.meta.env.VITE_LARAVEL_IMG_URL}${recipe.imageUrl}`}
-                                                alt={recipe.name} />
+                                            <div className="card-header img-contain p-0">
 
-                                        </div>
+                                                <img src={`${import.meta.env.VITE_LARAVEL_IMG_URL}${recipe.imageUrl}`}
+                                                    alt={recipe.name} />
 
-                                        <div className="card-body p-2 bg-info-">
+                                            </div>
 
-                                            <h4 className="p-0">
-                                                {recipe.name}
-                                            </h4>
+                                            <div className="card-body p-2 bg-info-">
+
+                                                <h4 className="p-0">
+                                                    {recipe.name}
+                                                </h4>
+
+                                            </div>
 
                                         </div>
 
                                     </div>
 
-                                </div>
+                                </Link>
 
                             )
 
@@ -423,28 +427,32 @@ export default function Home() {
 
                             return (
 
-                                <div className="col" key={"recipes" + recipe.id}>
+                                <Link to={`/recipes/${recipe.id}`}>
 
-                                    <div className="card">
+                                    <div className="col" key={"recipe" + recipe.id}>
 
-                                        <div className="card-header img-contain p-0">
+                                        <div className="card">
 
-                                            <img src={`${import.meta.env.VITE_LARAVEL_IMG_URL}${recipe.imageUrl}`}
-                                                alt={recipe.name} />
+                                            <div className="card-header img-contain p-0">
 
-                                        </div>
+                                                <img src={`${import.meta.env.VITE_LARAVEL_IMG_URL}${recipe.imageUrl}`}
+                                                    alt={recipe.name} />
 
-                                        <div className="card-body p-2 bg-info-">
+                                            </div>
 
-                                            <h4 className="p-0">
-                                                {recipe.name} ricerca
-                                            </h4>
+                                            <div className="card-body p-2 bg-info-">
+
+                                                <h4 className="p-0">
+                                                    {recipe.name} ricerca
+                                                </h4>
+
+                                            </div>
 
                                         </div>
 
                                     </div>
 
-                                </div>
+                                </Link>
 
                             )
 

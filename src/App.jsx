@@ -6,6 +6,7 @@ import RandomWheel from "./pages/RandomWheel"
 import Register from "./pages/Register"
 import { AuthProvider } from "./contexts/AuthContext"
 import Login from "./pages/Login"
+import Recipe from "./pages/Recipe"
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
                 <Route path="/register" element={<Register />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/" element={<Home />} />
+                <Route path="/recipes/:id" element={<Recipe />} />
                 <Route path="/wheel" element={<RandomWheel />} />
               </Route>
             </Routes>
