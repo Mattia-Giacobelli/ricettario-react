@@ -111,14 +111,14 @@ main {
         width: 78%;
         min-height: calc(100vh - 66px);
 
-        /* ✅ CAMBIATO: da fixed a margin-left per fluire nello scroll normale */
+
         margin-left: 18%;
         margin-right: 4%;
 
         .poll-overflow {
             height: 250px;
             overflow-y: auto;
-            /* auto è preferibile a scroll */
+
         }
     }
 
@@ -203,10 +203,11 @@ main {
     .content {
 
         width: 100% !important;
+
+        margin-left: 0% !important;
+        margin-right: 0% !important;
+
         position: relative !important;
-        top: 0px !important;
-        left: 0% !important;
-        right: 0% !important;
 
 
     }
