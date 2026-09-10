@@ -46,14 +46,15 @@ export default function DefaultLayout() {
 
                     {lastWin ?
 
-                        <div className="card text-center mt-5 m-3">
+                        <div className="text-center mt-5 m-3">
 
-                            <div className="card-header">
+                            <div className="mb-2">
+                                <i className="bi bi-trophy"></i> <br />
                                 Ultima vincitrice: <br></br>
                                 {lastPoll?.winningRecipe?.name}
                             </div>
 
-                            <div className="card-body img-contain p-0">
+                            <div className="card-body img-contain h-100 p-0 border rounded-1 border-warning">
                                 <img className="p-0" src={`${import.meta.env.VITE_LARAVEL_IMG_URL}${lastPoll?.winningRecipe?.imageUrl}`}
                                     alt={lastPoll?.winningRecipe?.name} />
                             </div>
