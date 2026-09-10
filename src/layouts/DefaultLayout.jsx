@@ -42,7 +42,7 @@ export default function DefaultLayout() {
                         </Link>
                     </h2>
 
-                    {lastPoll?.winningRecipe?.name != "none" ?
+                    {lastPoll?.winningRecipe?.name != "none" && lastPoll ?
 
                         <div className="text-center mt-5 m-3">
 
