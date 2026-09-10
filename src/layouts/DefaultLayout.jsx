@@ -6,8 +6,6 @@ import { useRecipes } from "../contexts/RecipesContext";
 
 export default function DefaultLayout() {
 
-    const [lastWin, setLastwin] = useState({})
-
     const { recipeName, setRecipeName, addSuggestion, lastPoll, setLastPoll, getLastPoll, errMsg,
         searchValue, getSearch
     } = useRecipes()
@@ -44,7 +42,7 @@ export default function DefaultLayout() {
                         </Link>
                     </h2>
 
-                    {lastWin ?
+                    {lastPoll?.winningRecipe?.name != "none" ?
 
                         <div className="text-center mt-5 m-3">
 

@@ -408,14 +408,9 @@ export default function Home() {
                                                     if (index < 4) {
 
                                                         return (
-
-                                                            <>
-
-                                                                <span className="badge rounded-pill bg-warning tag">
-                                                                    {tag}
-                                                                </span>
-
-                                                            </>
+                                                            <span key={tag} className="badge rounded-pill bg-warning tag">
+                                                                {tag}
+                                                            </span>
                                                         )
 
                                                     }
