@@ -38,14 +38,18 @@ export default function Recipe() {
 
         <>
 
-            <div className="container mt-3">
+            <div className="container mt-5">
 
                 <div className="card">
 
-                    <div className="card-header d-flex justify-content-around align-items-center">
+                    <div className="card-header d-flex flex-column flex-lg-row justify-content-around align-items-center ">
 
-                        <img src={`${import.meta.env.VITE_LARAVEL_IMG_URL}${recipe?.imageUrl}`}
-                            alt={recipe?.name} />
+                        <div className="img-contain-r">
+
+                            <img src={`${import.meta.env.VITE_LARAVEL_IMG_URL}${recipe?.imageUrl}`}
+                                alt={recipe?.name} className="img-transform-r" />
+
+                        </div>
 
                         <div className="d-flex flex-column">
 
@@ -70,7 +74,7 @@ export default function Recipe() {
 
                                     return (
 
-                                        <span key={tag + index} className="badge text-bg-info me-2">
+                                        <span key={tag + index} className="badge bg-warning me-2">
                                             {tag}
                                         </span>
 

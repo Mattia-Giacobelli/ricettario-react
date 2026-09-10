@@ -74,15 +74,14 @@ export default function DefaultLayout() {
 
                 <div className="right-sidebar">
 
-                    {/* 2. Toggle dello stato al click */}
+
                     <button
-                        className="bg-warning"
+                        className="bg-warning w-100"
                         onClick={() => setIsOpen(prev => !prev)}
                     >
                         <i className="bi bi-search"></i>
                     </button>
 
-                    {/* 3. Applicazione dinamica delle classi CSS basata sullo stato */}
                     <input
                         name="search"
                         className={`form-control search-pop-up ${isOpen ? 'fade-in' : 'd-none fade-out'}`}
@@ -91,7 +90,7 @@ export default function DefaultLayout() {
                         onChange={e => getSearch(e.target.value)}
                     />
 
-                    <Link to={"/wheel"} className="">
+                    <Link to={"/wheel"} className="w-100 mt-2">
                         <i className="bi bi-5-circle"></i>
                     </Link>
 

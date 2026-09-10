@@ -20,8 +20,8 @@ export default function Header() {
                         </h2>
                     </Link>
 
-                    <input name="search" className="form-control search-pop-up h-search" type="text"
-                        value={searchValue} onChange={e => getSearch(e.target.value)} />
+                    <input name="search" className="form-control search-pop-up h-search p-2" type="text"
+                        value={searchValue} onChange={e => getSearch(e.target.value)} placeholder="Cerca..." />
 
                     <ul className="navbar-nav mb-2 mb-lg-0 align-items-center justify-content-end">
                         {loggedUser?.username ? (

@@ -4,7 +4,7 @@ import { useRecipes } from "../contexts/RecipesContext"
 import { Link, useNavigate } from "react-router-dom"
 import { useAuth } from "../contexts/AuthContext"
 
-const colors = ['#19eb70', '#95C11E', '#F1C40F', '#E67E22', '#E74C3C']
+const colors = ['#0ec45a', '#88b40f', '#be9a08', '#dd6f0f', '#c52412']
 
 export default function Home() {
 
@@ -401,7 +401,26 @@ export default function Home() {
                                             <div className="card-header img-contain p-0">
 
                                                 <img src={`${import.meta.env.VITE_LARAVEL_IMG_URL}${recipe.imageUrl}`}
-                                                    alt={recipe.name} />
+                                                    alt={recipe.name} className="img-transform" />
+
+                                                {recipe.tags.map((tag, index) => {
+
+                                                    if (index < 4) {
+
+                                                        return (
+
+                                                            <>
+
+                                                                <span className="badge rounded-pill bg-warning tag">
+                                                                    {tag}
+                                                                </span>
+
+                                                            </>
+                                                        )
+
+                                                    }
+
+                                                })}
 
                                             </div>
 
