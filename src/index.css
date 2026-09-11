@@ -107,6 +107,16 @@ a {
     animation: fadeOut 0.3s forwards;
 }
 
+.overflow {
+
+    height: 1.7rem;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+}
+
 /* HEADER */
 
 header {

@@ -421,7 +421,7 @@ export default function Home() {
 
                                             <div className="card-body p-2" style={{ backgroundColor: colors[recipe?.rating?.difficulty - 1] }}>
 
-                                                <h4 className="p-0">
+                                                <h4 className="p-0 overflow">
                                                     {recipe.name}
                                                 </h4>
 
