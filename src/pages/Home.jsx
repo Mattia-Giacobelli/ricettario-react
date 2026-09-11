@@ -483,7 +483,7 @@ export default function Home() {
                         {recipes?.number < recipes?.totalPages &&
 
                             <button className="btn btn-outline-secondary m-3"
-                                onClick={() => prevPage(recipes?.number + 1)}>
+                                onClick={() => nextPage(recipes?.number + 1)}>
                                 +
                             </button>
 
