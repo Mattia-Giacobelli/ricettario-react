@@ -65,37 +65,63 @@ a {
 
 }
 
-.tag {
+.img-w {
 
-    position: absolute;
-    left: 3%;
-    bottom: 3%;
+    width: 84%;
+
+    object-fit: contain;
 
 }
 
-.img-transform {
-    width: 84% !important;
+.tags {
+
+    position: absolute;
+    left: 3%;
+    bottom: 4%;
+
+    span {
+
+        margin-right: 4px;
+
+        border: 4px solid white;
+
+    }
+
+}
+
+.img-box {
+
+    width: 84%;
+    height: 100%;
+    overflow: hidden;
+
     position: absolute;
     left: 8%;
     right: 8%;
     bottom: 10%;
+
+    border: 1px solid goldenrod;
     border-radius: 15px;
 
-    transition: transform 0.5s ease-in-out;
+}
+
+.img-transform {
+
     transform: rotate(0deg) scale(1);
+    transition: transform 0.5s ease-in-out;
 
     &:hover {
-        transform: rotate(10deg) scale(1.1);
+        transform: rotate(5deg) scale(1.19);
+
     }
 }
 
 .img-transform-r {
-
-    transition: transform 0.5s ease-in-out;
     transform: rotate(0deg) scale(1);
+    transition: transform 0.5s ease-in-out;
 
     &:hover {
-        transform: rotate(5deg) scale(1.05);
+        transform: rotate(5deg) scale(1.19);
     }
 }
 
@@ -194,7 +220,7 @@ main {
 
     .right-sidebar {
         background-color: white;
-        width: 4%;
+        width: 50px;
         height: calc(100vh - 66px);
 
         position: fixed;
@@ -206,7 +232,7 @@ main {
             margin-top: 2px;
             position: fixed;
             top: 66px;
-            right: 40px;
+            right: 50px;
         }
 
         button,

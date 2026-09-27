@@ -4,7 +4,7 @@ import { useRecipes } from "../contexts/RecipesContext"
 import { Link, useNavigate } from "react-router-dom"
 import { useAuth } from "../contexts/AuthContext"
 
-const colors = ['#0ec45a', '#88b40f', '#be9a08', '#dd6f0f', '#c52412']
+const colors = ['#99E053', '#C4E627', '#F2C200', '#FF7A03', '#D13434']
 
 export default function Home() {
 
@@ -398,32 +398,46 @@ export default function Home() {
 
                                         <div className="card">
 
-                                            <div className="card-header img-contain p-0">
+                                            <div className="card-header img-contain p-0  border-0">
 
-                                                <img src={`${import.meta.env.VITE_LARAVEL_IMG_URL}${recipe.imageUrl}`}
-                                                    alt={recipe.name} className="img-transform" />
+                                                <div className="img-box">
+                                                    <img src={`${import.meta.env.VITE_LARAVEL_IMG_URL}${recipe.imageUrl}`}
+                                                        alt={recipe.name} className="img-transform" />
+                                                </div>
 
-                                                {recipe.tags.map((tag, index) => {
+                                                <div className="tags">
 
-                                                    if (index < 4) {
+                                                    {recipe.tags.map((tag, index) => {
 
-                                                        return (
-                                                            <span key={tag} className="badge rounded-pill bg-warning tag">
-                                                                {tag}
-                                                            </span>
-                                                        )
+                                                        if (index < 2) {
 
-                                                    }
+                                                            return (
+                                                                <span key={tag} className="badge rounded-pill bg-warning">
+                                                                    {tag}
+                                                                </span>
+                                                            )
 
-                                                })}
+                                                        }
+
+                                                    })}
+
+                                                </div>
 
                                             </div>
 
-                                            <div className="card-body p-2" style={{ backgroundColor: colors[recipe?.rating?.difficulty - 1] }}>
+                                            <div className="card-body p-2  border-0">
 
                                                 <h4 className="p-0 overflow">
                                                     {recipe.name}
                                                 </h4>
+
+                                                <div className="ps-2 rounded-bottom" style={{ backgroundColor: colors[recipe?.rating?.difficulty - 1], margin: "5px -8px -8px -8px", padding: "5px 10px" }}>
+
+                                                    {Math.floor(Math.random() * 200)} <i className="bi bi-heart ms-1 me-3"></i>
+
+                                                    {Math.floor(Math.random() * (100 - 1 + 1)) + 1} <i className="bi bi-clock ms-1 me-3"></i>
+
+                                                </div>
 
                                             </div>
 
@@ -449,24 +463,53 @@ export default function Home() {
 
                                         <div className="card">
 
-                                            <div className="card-header img-contain p-0">
+                                            <div className="card-header img-contain p-0  border-0">
 
-                                                <img src={`${import.meta.env.VITE_LARAVEL_IMG_URL}${recipe.imageUrl}`}
-                                                    alt={recipe.name} />
+                                                <div className="img-box">
+                                                    <img src={`${import.meta.env.VITE_LARAVEL_IMG_URL}${recipe.imageUrl}`}
+                                                        alt={recipe.name} className="img-transform" />
+                                                </div>
+
+                                                <div className="tags">
+
+                                                    {recipe.tags.map((tag, index) => {
+
+                                                        if (index < 2) {
+
+                                                            return (
+                                                                <span key={tag} className="badge rounded-pill bg-warning">
+                                                                    {tag}
+                                                                </span>
+                                                            )
+
+                                                        }
+
+                                                    })}
+
+                                                </div>
 
                                             </div>
 
-                                            <div className="card-body p-2">
+                                            <div className="card-body p-2  border-0">
 
-                                                <h4 className="p-0">
+                                                <h4 className="p-0 overflow">
                                                     {recipe.name}
                                                 </h4>
+
+                                                <div className="ps-2 rounded-bottom" style={{ backgroundColor: colors[recipe?.rating?.difficulty - 1], margin: "5px -8px -8px -8px", padding: "5px 10px" }}>
+
+                                                    {Math.floor(Math.random() * 200)} <i className="bi bi-heart ms-1 me-3"></i>
+
+                                                    {Math.floor(Math.random() * (100 - 1 + 1)) + 1} <i className="bi bi-clock ms-1 me-3"></i>
+
+                                                </div>
 
                                             </div>
 
                                         </div>
 
                                     </div>
+
 
                                 </Link>
 

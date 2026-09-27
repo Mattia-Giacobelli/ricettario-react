@@ -7,7 +7,7 @@ import { useRecipes } from "../contexts/RecipesContext";
 export default function DefaultLayout() {
 
     const { recipeName, setRecipeName, addSuggestion, lastPoll, setLastPoll, getLastPoll, errMsg,
-        searchValue, getSearch
+        searchValue, getSearch, getRecipesAll
     } = useRecipes()
 
     const [isOpen, setIsOpen] = useState(false);
@@ -76,7 +76,13 @@ export default function DefaultLayout() {
 
                     <button
                         className="bg-warning w-100"
-                        onClick={() => setIsOpen(prev => !prev)}
+                        onClick={() => {
+
+                            setIsOpen(prev => !prev)
+
+                            getRecipesAll()
+                        }
+                        }
                     >
                         <i className="bi bi-search"></i>
                     </button>

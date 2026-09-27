@@ -203,9 +203,16 @@ function RecipesProvider({ children }) {
 
     function getSearch(value) {
 
+        getRecipesAll()
+
+        console.log(value);
+
+
         setSearchValue(value)
 
-        setResults(recipesAll.filter(recipe => recipe.name.includes(value)))
+        setResults(recipesAll.filter(recipe => recipe.name.toLowerCase().includes(value.toLowerCase())))
+
+        console.log(recipesAll.filter(recipe => recipe.name.toLowerCase().includes(value.toLowerCase())));
 
     }
 
