@@ -2,7 +2,7 @@ import { useAuth } from "../contexts/AuthContext"
 
 export default function Login() {
 
-    const { username, setUsername, password, setPassword, login } = useAuth()
+    const { username, setUsername, password, setPassword, login, usernameErr, passwordErr } = useAuth()
 
     function handleSubmit(e) {
 
@@ -23,16 +23,28 @@ export default function Login() {
 
                         <form onSubmit={e => handleSubmit(e)}>
                             <div className="mb-3">
-                                <label for="username" className="form-label">Username</label>
+                                <label htmlFor="username" className="form-label">Username</label>
                                 <input type="text" className="form-control" id="username" value={username}
                                     onChange={e => setUsername(e.target.value)} />
+
+                                {usernameErr != "" &&
+                                    <small className="text-danger">
+                                        {usernameErr}
+                                    </small>
+                                }
 
                             </div>
 
                             <div className="mb-3">
-                                <label for="Password" className="form-label">Password</label>
+                                <label htmlFor="Password" className="form-label">Password</label>
                                 <input type="password" className="form-control" id="Password" value={password}
                                     onChange={e => setPassword(e.target.value)} />
+
+                                {passwordErr &&
+                                    <small className="text-danger">
+                                        {passwordErr}
+                                    </small>
+                                }
                             </div>
                             <button type="submit" className="btn btn-primary">Submit</button>
                         </form>

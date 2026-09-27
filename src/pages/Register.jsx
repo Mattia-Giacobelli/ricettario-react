@@ -2,7 +2,7 @@ import { useAuth } from "../contexts/AuthContext"
 
 export default function Register() {
 
-    const { username, setUsername, email, setEmail, password, setPassword, register } = useAuth()
+    const { username, setUsername, email, setEmail, password, setPassword, register, usernameErr } = useAuth()
 
 
     function handleSubmit(e) {
@@ -24,18 +24,24 @@ export default function Register() {
 
                         <form onSubmit={e => handleSubmit(e)}>
                             <div className="mb-3">
-                                <label for="username" className="form-label">Username</label>
+                                <label htmlFor="username" className="form-label">Username</label>
                                 <input type="text" className="form-control" id="username" value={username}
                                     onChange={e => setUsername(e.target.value)} />
 
+                                {usernameErr != "" &&
+                                    <small className="text-danger">
+                                        {usernameErr}
+                                    </small>
+                                }
+
                             </div>
                             <div className="mb-3">
-                                <label for="email" className="form-label">Email </label>
+                                <label htmlFor="email" className="form-label">Email </label>
                                 <input type="email" className="form-control" id="email" value={email}
                                     onChange={e => setEmail(e.target.value)} />
                             </div>
                             <div className="mb-3">
-                                <label for="Password" className="form-label">Password</label>
+                                <label htmlFor="Password" className="form-label">Password</label>
                                 <input type="password" className="form-control" id="Password" value={password}
                                     onChange={e => setPassword(e.target.value)} />
                             </div>

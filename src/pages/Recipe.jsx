@@ -105,7 +105,7 @@ export default function Recipe() {
                                 return (
 
                                     <li key={ing.name + index} className="list-group-item">
-                                        {ing.name + " " + ing.quantity + ing.unit + " (" + ing.notes + ")"}
+                                        {ing.name + " " + ing.quantity + ing.unit} {ing.notes && " (" + ing.notes + ")"}
                                     </li>
 
                                 )

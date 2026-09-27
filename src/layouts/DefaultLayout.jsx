@@ -52,10 +52,14 @@ export default function DefaultLayout() {
                                 {lastPoll?.winningRecipe?.name}
                             </div>
 
-                            <div className="card-body img-contain h-100 p-0 border rounded-1 border-warning">
-                                <img className="p-0" src={`${import.meta.env.VITE_LARAVEL_IMG_URL}${lastPoll?.winningRecipe?.imageUrl}`}
-                                    alt={lastPoll?.winningRecipe?.name} />
-                            </div>
+                            <Link to={`/recipes/${lastPoll?.winningRecipe.id}`}>
+
+                                <div className="card-body img-contain h-100 p-0 border rounded-1 border-warning">
+                                    <img className="p-0" src={`${import.meta.env.VITE_LARAVEL_IMG_URL}${lastPoll?.winningRecipe?.imageUrl}`}
+                                        alt={lastPoll?.winningRecipe?.name} />
+                                </div>
+
+                            </Link>
 
                         </div>
                         :

@@ -12,6 +12,9 @@ function AuthProvider({ children }) {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
 
+    const [usernameErr, setUsernameErr] = useState("")
+    const [passwordErr, setPasswordErr] = useState("")
+
     const [loggedUser, setLoggedUser] = useState(() => {
 
         const savedUser = localStorage.getItem("user")
@@ -29,6 +32,8 @@ function AuthProvider({ children }) {
 
     function register(username, email, password) {
 
+        setUsernameErr("")
+
         const newUser = {
 
             username,
@@ -41,6 +46,20 @@ function AuthProvider({ children }) {
         axios.post(`${import.meta.env.VITE_API_URL}/auth/register`, newUser)
             .then(res => {
                 console.log(res.data)
+
+                navigate("/login")
+            })
+            .catch(err => {
+
+                if (err.response.data === "Username già in uso") {
+
+
+                    console.log(err.response.data);
+
+                    setUsernameErr(err.response.data)
+
+                }
+
             })
 
 
@@ -48,11 +67,12 @@ function AuthProvider({ children }) {
         setEmail("")
         setPassword("")
 
-        navigate("/login")
-
     }
 
     function login(username, password) {
+
+        setUsernameErr("")
+        setPasswordErr("")
 
         const user = {
 
@@ -72,13 +92,28 @@ function AuthProvider({ children }) {
                     localStorage.setItem("token", res.data.token)
                     return localStorage.getItem("token")
                 })
+
+                navigate("/")
+            })
+            .catch(err => {
+
+                console.log(err.response.data);
+
+                if (err.response.data === "Utente non trovato") {
+
+                    setUsernameErr(err.response.data)
+
+                } else if (err.response.data === "Password errata") {
+
+                    setPasswordErr(err.response.data)
+
+                }
+
             })
 
 
         setUsername("")
         setPassword("")
-
-        navigate("/")
 
     }
 
@@ -105,7 +140,7 @@ function AuthProvider({ children }) {
         <AuthContext.Provider
             value={{
                 username, setUsername, email, setEmail, password, setPassword, loggedUser, setLoggedUser,
-                register, login, logout
+                register, login, logout, usernameErr, passwordErr
             }}>
             {children}
         </AuthContext.Provider>

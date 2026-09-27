@@ -12,7 +12,7 @@ function RecipesProvider({ children }) {
 
     const [recipesAll, setRecipesAll] = useState([])
 
-    const [activePoll, setActivePoll] = useState({})
+    const [activePoll, setActivePoll] = useState(null)
 
     const [lastPoll, setLastPoll] = useState({})
 
@@ -203,16 +203,9 @@ function RecipesProvider({ children }) {
 
     function getSearch(value) {
 
-        getRecipesAll()
-
-        console.log(value);
-
-
         setSearchValue(value)
 
         setResults(recipesAll.filter(recipe => recipe.name.toLowerCase().includes(value.toLowerCase())))
-
-        console.log(recipesAll.filter(recipe => recipe.name.toLowerCase().includes(value.toLowerCase())));
 
     }
 

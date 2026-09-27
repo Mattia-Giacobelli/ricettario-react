@@ -3,6 +3,9 @@ import { useEffect, useState } from "react"
 import { useRecipes } from "../contexts/RecipesContext"
 import { Link, useNavigate } from "react-router-dom"
 import { useAuth } from "../contexts/AuthContext"
+import Swiper from 'swiper';
+import 'swiper/css';
+import RecipeSwiper from "../components/RecipesSwiper"
 
 const colors = ['#99E053', '#C4E627', '#F2C200', '#FF7A03', '#D13434']
 
@@ -34,7 +37,7 @@ export default function Home() {
 
             <div className="container mt-3">
 
-                {activePoll &&
+                {activePoll ?
 
                     <div className="card">
 
@@ -382,9 +385,12 @@ export default function Home() {
 
                     </div>
 
+                    :
+
+                    <RecipeSwiper />
                 }
 
-                <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-6 g-4 mt-3">
+                <div className="row row-cols-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-3 row-cols-xl-4 g-4 mt-3">
 
                     {results.length === 0 ?
 
@@ -431,11 +437,15 @@ export default function Home() {
                                                     {recipe.name}
                                                 </h4>
 
-                                                <div className="ps-2 rounded-bottom" style={{ backgroundColor: colors[recipe?.rating?.difficulty - 1], margin: "5px -8px -8px -8px", padding: "5px 10px" }}>
+                                                <div className="ps-2 rounded-bottom" style={{ backgroundColor: colors[recipe?.rating?.difficulty - 1], margin: "5px -8px -8px -8px", padding: "5px 10px", color: "white" }}>
 
-                                                    {Math.floor(Math.random() * 200)} <i className="bi bi-heart ms-1 me-3"></i>
+                                                    <span className="ms-1 me-3">
+                                                        <i className="bi bi-heart"></i> {Math.floor(Math.random() * 200)} LIKES
+                                                    </span>
 
-                                                    {Math.floor(Math.random() * (100 - 1 + 1)) + 1} <i className="bi bi-clock ms-1 me-3"></i>
+                                                    <span className="ms-1 me-3">
+                                                        <i className="bi bi-clock"></i> {Math.floor(Math.random() * (999 - 1 + 1)) + 1} MIN
+                                                    </span>
 
                                                 </div>
 
@@ -498,9 +508,13 @@ export default function Home() {
 
                                                 <div className="ps-2 rounded-bottom" style={{ backgroundColor: colors[recipe?.rating?.difficulty - 1], margin: "5px -8px -8px -8px", padding: "5px 10px" }}>
 
-                                                    {Math.floor(Math.random() * 200)} <i className="bi bi-heart ms-1 me-3"></i>
+                                                    <span className="ms-1 me-3">
+                                                        <i className="bi bi-heart"></i> {Math.floor(Math.random() * 200)} LIKES
+                                                    </span>
 
-                                                    {Math.floor(Math.random() * (100 - 1 + 1)) + 1} <i className="bi bi-clock ms-1 me-3"></i>
+                                                    <span className="ms-1 me-3">
+                                                        <i className="bi bi-clock"></i> {Math.floor(Math.random() * (999 - 1 + 1)) + 1} MIN
+                                                    </span>
 
                                                 </div>
 
